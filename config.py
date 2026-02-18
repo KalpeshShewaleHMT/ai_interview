@@ -7,6 +7,5 @@ class Config:
     
     # Multiple Gemini API Keys
     GEMINI_API_KEYS = [
-        "YOUR_GEMINI_KEY_1",
-        "YOUR_GEMINI_KEY_2"
+        ""
     ]

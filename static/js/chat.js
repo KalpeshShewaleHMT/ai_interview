@@ -1,8 +1,15 @@
 let questionNumber = 1;
-let history = "";
-const interviewId = window.location.pathname.split("/").pop();
+let isProcessing = false;
 
-async function sendAnswer(answer) {
+// Auto first question
+window.onload = function() {
+    fetchQuestion("");
+};
+
+async function fetchQuestion(answer) {
+
+    if (isProcessing) return;
+    isProcessing = true;
 
     const response = await fetch("/api/interview", {
         method: "POST",
@@ -16,28 +23,43 @@ async function sendAnswer(answer) {
 
     const data = await response.json();
 
+    if (answer) {
+        document.getElementById("chat-box").innerHTML +=
+            "<div class='user-msg'>" + answer + "</div>";
+    }
+
+    document.getElementById("chat-box").innerHTML +=
+        "<div class='ai-msg'>" + data.response + "</div>";
+
     if (data.completed) {
-        document.getElementById("chat-box").innerHTML += 
-            "<div class='ai-msg'>" + data.response + "</div>";
         alert("Interview Completed!");
+        isProcessing = false;
         return;
     }
 
-    document.getElementById("chat-box").innerHTML += 
-        "<div class='ai-msg'>" + data.response + "</div>";
-
     questionNumber++;
+    isProcessing = false;
 }
 
+// Manual typing
+function sendTypedAnswer() {
+    const input = document.getElementById("answer-input");
+    const text = input.value.trim();
 
+    if (!text) return;
+
+    input.value = "";
+    fetchQuestion(text);
+}
+
+// Speech to text
 function startListening() {
-    const recognition = new webkitSpeechRecognition();
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
     recognition.start();
 
     recognition.onresult = function(event) {
         const text = event.results[0][0].transcript;
-        document.getElementById("chat-box").innerHTML += 
-            "<div class='user-msg'>" + text + "</div>";
-        sendAnswer(text);
-    }
+        fetchQuestion(text);
+    };
 }
