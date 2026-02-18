@@ -3,25 +3,32 @@ let history = "";
 const interviewId = window.location.pathname.split("/").pop();
 
 async function sendAnswer(answer) {
-    history += "\nUser: " + answer;
 
     const response = await fetch("/api/interview", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
             interview_id: interviewId,
-            history: history,
-            question_number: questionNumber
+            question_number: questionNumber,
+            answer: answer
         })
     });
 
     const data = await response.json();
+
+    if (data.completed) {
+        document.getElementById("chat-box").innerHTML += 
+            "<div class='ai-msg'>" + data.response + "</div>";
+        alert("Interview Completed!");
+        return;
+    }
+
     document.getElementById("chat-box").innerHTML += 
         "<div class='ai-msg'>" + data.response + "</div>";
 
-    history += "\nAI: " + data.response;
     questionNumber++;
 }
+
 
 function startListening() {
     const recognition = new webkitSpeechRecognition();

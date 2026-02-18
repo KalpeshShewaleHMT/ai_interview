@@ -20,6 +20,7 @@ class Conversation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     interview_id = db.Column(db.Integer)
+    question_number = db.Column(db.Integer)
     question = db.Column(db.Text)
     answer = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -29,4 +30,6 @@ class Result(db.Model):
     user_id = db.Column(db.Integer)
     interview_id = db.Column(db.Integer)
     feedback = db.Column(db.Text)
-    score = db.Column(db.String(50))
+    score = db.Column(db.Integer)
+    completed_at = db.Column(db.DateTime, default=datetime.utcnow)
+

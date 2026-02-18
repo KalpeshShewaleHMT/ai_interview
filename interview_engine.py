@@ -10,8 +10,20 @@ class InterviewEngine:
     def build_prompt(self, history, question_number):
         if question_number == self.total_questions:
             return f"""
-You are a professional interviewer.
-Based on the conversation below, provide final performance feedback and score out of 10.
+You are a professional technical interviewer.
+
+Based on the entire conversation below:
+
+1. Give overall feedback.
+2. Give a score out of 10.
+3. Format strictly as:
+
+FEEDBACK:
+<feedback text>
+
+SCORE:
+<number>
+
 Conversation:
 {history}
 """

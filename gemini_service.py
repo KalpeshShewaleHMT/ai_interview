@@ -21,4 +21,5 @@ class GeminiService:
         }
 
         response = requests.post(url, headers=headers, json=data)
+        print("Gemini API Response:", response.text)  # Debugging line
         return response.json()["candidates"][0]["content"]["parts"][0]["text"]

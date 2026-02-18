@@ -19,6 +19,25 @@
 <script>
     const TOTAL_QUESTIONS = {{ interview.total_questions }};
 </script>
+<script>
+window.onload = function() {
+    fetch("/api/interview", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            interview_id: {{ interview.id }},
+            question_number: 1,
+            answer: ""
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("chat-box").innerHTML += 
+            "<div class='ai-msg'>" + data.response + "</div>";
+    });
+}
+</script>
+
 <script src="/static/js/chat.js"></script>
 
 {% endblock %}
