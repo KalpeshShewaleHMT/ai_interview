@@ -7,5 +7,5 @@ class Config:
     
     # Multiple Gemini API Keys
     GEMINI_API_KEYS = [
-        ""
+        "AIzaSyAuS0v1FwtrVTtB_13O3o2BKOukMwYNGGs"
     ]

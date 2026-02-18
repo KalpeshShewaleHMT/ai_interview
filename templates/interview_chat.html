@@ -3,6 +3,12 @@
 
 <h2>{{ interview.topic }} Interview</h2>
 
+<!-- Progress Bar -->
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+<p id="progress-text">Question 1 of {{ interview.total_questions }}</p>
+
 <div class="chat-wrapper">
 
     <div class="chat-box" id="chat-box"></div>
@@ -24,7 +30,6 @@
     const TOTAL_QUESTIONS = {{ interview.total_questions }};
     const interviewId = {{ interview.id }};
 </script>
-
 
 <script src="/static/js/chat.js"></script>
 
