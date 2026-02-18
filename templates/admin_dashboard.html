@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div class="stats-grid">
+    <div class="card">Users: {{ users|length }}</div>
+    <div class="card">Interviews: {{ interviews|length }}</div>
+</div>
+
+<h3>Add Interview</h3>
+<form method="POST" action="/add_interview">
+    <input type="text" name="topic" placeholder="Topic" required>
+    <select name="difficulty">
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>Hard</option>
+    </select>
+    <input type="number" name="total_questions" placeholder="No of Questions" required>
+    <button type="submit">Add</button>
+</form>
+
+<h3>All Interviews</h3>
+<ul>
+{% for i in interviews %}
+    <li>{{ i.topic }} - {{ i.difficulty }} - {{ i.total_questions }} questions</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

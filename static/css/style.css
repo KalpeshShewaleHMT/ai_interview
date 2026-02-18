@@ -1,0 +1,110 @@
+body {
+    margin:0;
+    font-family: 'Segoe UI';
+    background: linear-gradient(135deg,#240C73,#5C2DFF);
+    color:white;
+}
+
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    padding:15px 40px;
+    background:rgba(0,0,0,0.2);
+}
+
+.navbar a {
+    color:white;
+    margin-left:15px;
+    text-decoration:none;
+}
+
+.container {
+    padding:40px;
+}
+
+.auth-card {
+    width:350px;
+    margin:auto;
+    padding:30px;
+    background:rgba(255,255,255,0.1);
+    border-radius:15px;
+    animation: fadeIn 0.6s ease;
+}
+
+.auth-card input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+
+button, .btn {
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#240C73;
+    cursor:pointer;
+}
+
+.card-grid {
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card {
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:12px;
+    width:250px;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+}
+
+.chat-wrapper {
+    display:flex;
+    gap:20px;
+}
+
+.chat-box {
+    width:70%;
+    height:400px;
+    overflow:auto;
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:15px;
+}
+
+.avatar-section {
+    text-align:center;
+}
+
+.avatar {
+    width:120px;
+}
+
+.user-msg {
+    text-align:right;
+    margin:10px;
+}
+
+.ai-msg {
+    text-align:left;
+    margin:10px;
+}
+
+.mic-btn {
+    margin-top:20px;
+    background:white;
+    color:#240C73;
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}

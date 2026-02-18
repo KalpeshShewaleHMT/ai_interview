@@ -1,0 +1,71 @@
+# ----------------------------
+# Python
+# ----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# ----------------------------
+# Virtual Environment
+# ----------------------------
+venv/
+env/
+ENV/
+.venv/
+
+# ----------------------------
+# Flask
+# ----------------------------
+instance/
+*.db
+*.sqlite3
+
+# SQLite database
+database.db
+instance/database.db
+
+# ----------------------------
+# Environment Variables
+# ----------------------------
+.env
+
+# ----------------------------
+# Logs
+# ----------------------------
+*.log
+
+# ----------------------------
+# IDE / Editors
+# ----------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ----------------------------
+# OS Files
+# ----------------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+# Python packaging
+# ----------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ----------------------------
+# Testing / Coverage
+# ----------------------------
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ----------------------------
+# Static compiled files
+# ----------------------------
+*.map

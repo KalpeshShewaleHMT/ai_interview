@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Available Interviews</h2>
+
+<div class="card-grid">
+{% for i in interviews %}
+    <div class="card">
+        <h3>{{ i.topic }}</h3>
+        <p>{{ i.difficulty }}</p>
+        <p>{{ i.total_questions }} Questions</p>
+        <a class="btn" href="/start_interview/{{ i.id }}">Start</a>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
