@@ -1,30 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Admin Dashboard</h2>
+<h3 class="mb-4">Admin Dashboard</h3>
 
-<div class="stats-grid">
-    <div class="card">Users: {{ users|length }}</div>
-    <div class="card">Interviews: {{ interviews|length }}</div>
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h2>{{ users|length }}</h2>
+                <p class="text-muted">Total Users</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h2>{{ interviews|length }}</h2>
+                <p class="text-muted">Total Interviews</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<h3>Add Interview</h3>
-<form method="POST" action="/add_interview">
-    <input type="text" name="topic" placeholder="Topic" required>
-    <select name="difficulty">
-        <option>Easy</option>
-        <option>Medium</option>
-        <option>Hard</option>
-    </select>
-    <input type="number" name="total_questions" placeholder="No of Questions" required>
-    <button type="submit">Add</button>
-</form>
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5>Add Interview</h5>
+        <form method="POST" action="/add_interview" class="row g-3">
+            <div class="col-md-4">
+                <input class="form-control" name="topic" placeholder="Topic" required>
+            </div>
+            <div class="col-md-3">
+                <select name="difficulty" class="form-select">
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="number" name="total_questions" class="form-control" placeholder="Questions" required>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<h3>All Interviews</h3>
-<ul>
-{% for i in interviews %}
-    <li>{{ i.topic }} - {{ i.difficulty }} - {{ i.total_questions }} questions</li>
-{% endfor %}
-</ul>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h5>All Interviews</h5>
+        <table class="table table-striped mt-3">
+            <tr>
+                <th>Topic</th>
+                <th>Difficulty</th>
+                <th>Questions</th>
+            </tr>
+            {% for i in interviews %}
+            <tr>
+                <td>{{ i.topic }}</td>
+                <td>{{ i.difficulty }}</td>
+                <td>{{ i.total_questions }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 {% endblock %}

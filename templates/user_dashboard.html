@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Available Interviews</h2>
+<h3 class="mb-4">Available Interviews</h3>
 
-<div class="card-grid">
+<div class="row g-4">
 {% for i in interviews %}
-    <div class="card">
-        <h3>{{ i.topic }}</h3>
-        <p>{{ i.difficulty }}</p>
-        <p>{{ i.total_questions }} Questions</p>
-        <a class="btn" href="/start_interview/{{ i.id }}">Start</a>
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5>{{ i.topic }}</h5>
+                <span class="badge bg-secondary">{{ i.difficulty }}</span>
+                <p class="mt-2">{{ i.total_questions }} questions</p>
+                <a href="/start_interview/{{ i.id }}" class="btn btn-primary w-100">
+                    Start Interview
+                </a>
+            </div>
+        </div>
     </div>
 {% endfor %}
 </div>

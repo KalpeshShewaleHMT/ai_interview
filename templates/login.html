@@ -1,13 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="auth-card">
-    <h2>Login</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
+<div class="row justify-content-center align-items-center" style="min-height:70vh;">
+    <div class="col-md-5 col-lg-4">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h4 class="mb-3 text-center">Login</h4>
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <button class="btn btn-primary w-100">Login</button>
+                </form>
+
+                <p class="text-center text-muted mt-3">
+                    New user? <a href="/register">Register</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

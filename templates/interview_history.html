@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Interview History</h2>
+<h3 class="mb-4">Interview History</h3>
 
-<table>
-<tr>
-    <th>Interview ID</th>
-    <th>Score</th>
-    <th>Feedback</th>
-</tr>
-
-{% for r in results %}
-<tr>
-    <td>{{ r.interview_id }}</td>
-    <td>{{ r.score }}</td>
-    <td>{{ r.feedback }}</td>
-</tr>
-{% endfor %}
-
-</table>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Score</th>
+                <th>Feedback</th>
+            </tr>
+            {% for r in results %}
+            <tr>
+                <td>{{ r.interview_id }}</td>
+                <td>{{ r.score }}</td>
+                <td>{{ r.feedback }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 {% endblock %}
